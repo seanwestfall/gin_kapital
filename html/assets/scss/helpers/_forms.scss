@@ -1,0 +1,193 @@
+// B -------------------------------------------------------------------------------------------------------------------
+
+.btn { @include border-radius(2px); @include shadow; @include transition-link; border: none; text-transform: uppercase;
+  &:focus, &:active, &:hover { outline: none !important; }
+  &:active { @include shadow-small; background-color: #fafafa; }
+  &:focus { @include shadow; background-color: #fff; }
+
+  &.btn-default { color: $color-default;
+    &:hover { background-color: #fafafa; }
+    &:active { @include box-shadow(none); }
+  }
+  &.btn-primary { background-color: $color-default; font-size: 13px;
+    &:hover { background-color: darken($color-default,5%); }
+  }
+  &.btn-link { @include box-shadow(none); background-color: transparent; color: $color-default; font-size: 12px; padding: 0;
+    &:hover, &:focus, &:active { text-decoration: none; }
+    &.dark { color: $color-grey; }
+  }
+  &.btn-sm { font-size: 11px; }
+  &.btn-circle { @include border-radius(50%); display: inline-block; padding: 30px; position: relative;
+    &:active { @include box-shadow(none); }
+    i { display: block; bottom: 0; left: 0; right: 0; top: 0; margin: auto; width: 12px; position: absolute; line-height: 60px; }
+    &.btn-xl { background-color: $color-default; padding: 50px;
+      i { font-size: 32px; height: inherit; width: 100%; line-height: 100px; }
+    }
+  }
+}
+
+// Bootstrap Select
+
+.bootstrap-select { width: 100% !important; margin-bottom: 0 !important;
+  .dropdown-toggle {
+    &.btn-default { background-color: transparent; }
+  }
+  .bootstrap-select-searchbox {
+    &:after { @include font-awesome;  content: "\f002"; display: block; color: $color-grey; position: absolute; right: 16px; top: 18px; }
+    input { @include box-shadow(none); margin-top: 5px; padding: 5px;
+      &:focus, &:active, &:hover { @include box-shadow(none); }
+    }
+  }
+  .selectpicker { @include transition-link; color: $color-grey; font-weight: normal; padding: 7px 12px 7px 0px; text-transform: none;
+    &:focus, &:active { outline: none !important; }
+    .caret { border: none;
+      &:hover {
+        &:after { color: $color-default; }
+      }
+      &:after { @include font-awesome; color: $color-grey; content: "\f0d7"; font-size: 12px; position: absolute; top: -3px; right: -2px; }
+    }
+    .filter-option { @include transition-link; padding-left: 0px; position: relative;
+      &:before { @include opacity(0); @include font-awesome; @include transition(.3s); color: $color-default; content: "\f00c"; font-size: 14px; position: absolute; left: 0px; top: 2px; }
+    }
+  }
+  &.show-menu-arrow {
+    .dropdown-toggle {
+      &:after { bottom: -5px; }
+      &:before { border: none; }
+    }
+  }
+  .dropdown-menu { @include border-radius(0px); @include shadow; border: none; left: -20px; top: -7px; padding: 0; padding-left: 0 !important; width: calc(100% + 40px);
+    &.selectpicker { background-color: #fff !important; }
+    li {
+      a { @include transition-link; color: $color-grey; padding: 15px 20px;
+        &:hover { background-color: rgba(0,0,0,.05); color: $color-grey; }
+      }
+    }
+
+    > li {
+      &:first-child {
+        a { border-top: none; }
+      }
+      a { display: block;
+        &.sub-category { @include opacity(.8); border-top: none; font-size: 12px; padding: 5px 5px 5px 30px;
+          &:before { @include font-awesome; color: #e2e2e2; content: "\f111"; font-size: 5px; position: relative; top: -2px; left: -8px; }
+        }
+      }
+    }
+
+    > .active {
+      > a { background-color: $color-default; color: #fff; }
+    }
+
+  }
+  &.open {
+    .selectpicker { @include box-shadow(none); }
+  }
+  &.btn-group.show-tick .dropdown-menu li.selected a i.check-mark { font-size: 10px; margin-top: 20px; right: 60px; }
+  &.btn-group.show-tick .dropdown-menu li.selected a.sub-category i.check-mark { margin-top: 5px; }
+}
+
+// C -------------------------------------------------------------------------------------------------------------------
+
+// Checkboxes
+
+.checkbox, .radio { padding-left: 0px; }
+
+.checkbox {
+  &:hover {
+    .icheckbox { }
+  }
+  label { @include opacity(1); font-size: 14px; padding-left: 0; }
+  .icheckbox { @include transition-link; @include border-radius(2px); border: 2px solid #cecece; position: relative; display: inline-block; vertical-align: middle; background-color: transparent; display: inline-block; height: 20px; margin-right: 20px; position: relative; width: 20px; top: -1px;
+    &:after { @include transition-link; @include opacity(0); @include font-awesome; color: #fff; content: "\f00c"; position: absolute; font-size: 12px; left: 2px; top: 2px; }
+    &.checked { border-color: $color-grey; background-color: $color-grey;
+      &:after { @include opacity(1); }
+    }
+  }
+}
+
+.iradio { @include border-radius(50%); position: relative; display: inline-block; vertical-align: middle; background-color: $color-grey-medium; height: 20px; margin-right: 10px; position: relative; width: 20px; top: -1px;
+  &:after { @include transition(.3s); @include opacity(0); @include border-radius(50%); width: 8px; height: 8px; position: absolute; top: 0; right: 0; bottom: 0; left: 0; margin: auto; content: ""; background-color: $color-grey; }
+  &.checked {
+    &:after { @include opacity(1); }
+  }
+}
+
+// F -------------------------------------------------------------------------------------------------------------------
+
+form {
+  &.main-search { margin-bottom: 20px; }
+}
+.form-group-lg {
+  .form-control { @include border-radius(0px); padding: 10px 0px; }
+  .input-group-addon { font-size: 18px; }
+}
+
+// I -------------------------------------------------------------------------------------------------------------------
+
+input[type="text"],input[type="date"],input[type="email"], input[type="search"], input[type="password"], input[type="number"], input[type="tel"], textarea.form-control, .selectpicker {
+  @include border-radius(0px); @include box-shadow(none); background-color: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,.1); padding: 8px 12px; padding-left: 0;
+  &:hover, &:active, &:focus { @include box-shadow(none); border-bottom-color: rgba(0,0,0,.2); }
+  &:active, &:focus { border-bottom-color: rgba(0,0,0,.3); }
+}
+
+.input-group { height: 35px;
+  .input-group-btn, .input-group-addon {
+    .btn { @include border-radius(0px); @include transition-link; @include box-shadow(none); border: none; background-color: transparent; border-bottom: 1px solid rgba(0,0,0,.1); color: $color-default;// font-size: inherit; text-transform: inherit;
+      &:hover, &:active, &:focus { @include box-shadow(none); border-bottom-color: rgba(0,0,0,.2); background-color: transparent;
+        i { color: $color-default; }
+      }
+      i { @include transition-link; color: $color-grey; font-size: 8px; }
+    }
+  }
+  &.location {
+    .btn {
+      i { font-size: 12px; }
+    }
+  }
+  &.drop-down {
+    .input-group-btn { width: 60px;
+      .btn { color: $color-grey-medium; font-size: 13px; text-align: right; }
+      .dropdown-menu { font-size: 13px; }
+    }
+  }
+  .form-control {
+    z-index: 0;
+  }
+}
+
+.input-group-addon { @include border-radius(0px); background-color: transparent; border: none; border-bottom: 1px solid rgba(0,0,0,.1); color: $color-grey-medium; }
+
+// P -------------------------------------------------------------------------------------------------------------------
+
+// Price slider
+
+.ui-slider { @include border-radius(0px); @include box-shadow(none); border: none; background-color: transparent;
+  .noUi-base { @include border-radius(0px); @include box-shadow(none); border: none; height: 1px; background-color: #e4e4e2; margin-top: 10px;
+    .noUi-connect { @include box-shadow(none); background-color: $color-default; }
+    .noUi-background { @include box-shadow(none); background-color: #e4e4e2; }
+    .noUi-handle { @include transition(.2s); @include border-radius(50%); @include box-shadow(none); border: 2px solid $color-default; background-color: $color-default; cursor: pointer; height: 9px; width: 9px; left: 0px; top: -4px;
+      &:before, &:after { display: none; }
+      &:hover, &.noUi-active { @include box-shadow(0px 0px 0px 8px rgba(0,0,0,.07)); }
+      &.noUi-handle-upper { left: -8px; }
+    }
+  }
+  .values { font-size: 12px; //color: #fff;
+    input { background-color: transparent; border: none; width: 49%; }
+    input:first-child { float: left; }
+    input:last-child { float: right; text-align: right; }
+  }
+}
+
+// S -------------------------------------------------------------------------------------------------------------------
+
+.switch { display: inline-block;
+  &.checked {
+    small { @include transform( translateX(18px) ); background-color: $color-grey; }
+    .track { background-color: rgba(0,0,0,.2); }
+  }
+  label { font-size: 14px; margin-right: 10px; }
+  input { display: none; }
+  small { @include border-radius(50%); @include shadow; @include transition-link; @include transform( translateX(-2px) ); background-color: #fff; height: 22px; display: block; position: absolute; width: 22px; top: -5px; z-index: 1; }
+  .track { @include transition-link; @include border-top-left-radius(6px); @include border-top-right-radius(6px); @include border-bottom-left-radius(6px); @include border-bottom-right-radius(6px); background-color: rgba(0,0,0,.1); cursor: pointer; display: inline-block; margin: 10px 0; margin-right: 2px; height: 12px; width: 35px; position: relative; vertical-align: middle; }
+}

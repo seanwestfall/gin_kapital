@@ -1,0 +1,69 @@
+#page-wrapper { overflow: hidden;
+  > header { @include shadow-small; @include transition-link; @include transform( translateZ(0) ); background-color: #fff; margin-bottom: 50px; z-index: 1;
+    &.idle { background-color: rgba(255,255,255,.5);
+    }
+    .header-inner { display: table; position: relative; width: 100%;
+      nav { display: table; width: 100%;
+        &.main { font-size: 13px; padding: 15px 0px 25px; position: relative;
+          .brand { display: table-cell; vertical-align: middle; }
+        }
+        &.secondary { @include transition-effect; font-size: 11px; text-transform: uppercase;
+          a { @include opacity(.6);  padding: 6px 10px;
+            &:hover, &:active, &:focus { @include opacity(1); color: $color-grey; }
+            &.promoted { color: $color-default; font-weight: bold; }
+          }
+        }
+        ul { margin-bottom: 0; list-style: none; float: right; position: relative; z-index: 99;
+          li { display: inline-block; position: relative;
+            &:hover { z-index: 100;
+              > ul { visibility: visible; @include opacity(1); @include transform( translateY(0px) ); pointer-events: inherit; }
+            }
+            &:last-child {
+              a { padding-right: 0; }
+            }
+            a { display: block; padding: 15px; position: relative;
+              &.has-child {
+                &:after { @include font-awesome; content: "\f0d7"; color: $color-default; padding-left: 8px; font-size: 12px; }
+              }
+            }
+            ul { @include shadow; @include opacity(0); @include transition-link; @include transform( translateY(10px) ); background-color: #fff; left: 0; padding-left: 0px; padding-top: 40px; pointer-events: none; position: absolute; top: 0; visibility: hidden; z-index: -1;
+              li { display: block;
+                &:last-child {
+                  a { padding-right: 15px; }
+                }
+                a { @include opacity(.8); white-space: nowrap; padding: 10px 15px; }
+              }
+            }
+          }
+        }
+      }
+    }
+    .submit-button { @include transition-effect; @include border-radius(50%); @include shadow; background-color: $color-default; bottom: -27px; height: 56px; width: 56px; position: absolute; right: 0; text-align: center; z-index: 2; overflow: hidden;
+      &:hover { @include transform( scale(1.1) );
+        &:before { @include transform( scale(1) ); }
+        &:after { @include transition-delay(.2s); @include transform( scale(1) ); }
+        i { @include transform(rotate(90deg)); }
+      }
+      &.submit-page-open { @include transform( scale(0) );
+        i { @include transform(rotate(180deg)); }
+      }
+      i { @include transition-effect; @include transform( scale(.9) ); position: absolute; top: 0px; bottom: 0px; margin: auto; height: 22px; left: 0; right: 0; width: 18px; z-index: 1 }
+    }
+    .submit-container { margin-top: 5px; position: relative; }
+  }
+  #user-area { @include shadow-small; background-color: #fff;
+    .close { top: 20px; }
+    .inner { padding: 20px 0 30px;  }
+    form {
+      .form-group:last-child { margin-bottom: 0; }
+    }
+  }
+}
+
+.toggle-nav { display: none; width: 30px; height: 30px; text-align: center; float: right; cursor: pointer;
+  &:hover {
+    i { color: $color-default; }
+  }
+  i { @include transition-link; display: block; font-size: 4px; margin-bottom: 2px; }
+  .dots { position: relative; top: 7px; }
+}

@@ -1,0 +1,33 @@
+body { @include transition-link; background-color: $color-background; font-family: 'Roboto', sans-serif; font-size: 14px; color: $color-grey; }
+
+a { @include transition-link; color: $color-grey;
+  &:hover, &:active, &:focus { color: $color-default; text-decoration: none; outline: none !important; }
+  &:active { @include box-shadow(0 0 0 0 rgba(0,0,0,0)); }
+  &.link { color: $color-default;
+    &:hover { text-decoration: underline; }
+  }
+}
+dl { margin-bottom: 0;
+  dt { float: left; }
+  dd { text-align: right; margin-bottom: 10px;
+    &:last-child { margin-bottom: 0; }
+  }
+}
+
+h1 { font-size: 24px; font-weight: lighter; margin-bottom: 40px; margin-top: 0; }
+h2 { font-size: 18px; margin-bottom: 20px; margin-top: 0; }
+h3 { font-size: 16px; font-weight: bold; margin-bottom: 40px; }
+
+header { position: relative; }
+
+label { @include opacity(.5); font-size: 12px; font-weight: normal; }
+
+p { @include opacity(.7); margin: 10px 0; }
+
+ul {
+  &.bullets { list-style: none; padding-left: 0;
+    li { padding: 5px 0;
+      &:before { @include font-awesome; content: "\f10c"; color: $color-default; margin-right: 15px; font-size: 8px; position: relative; bottom: 2px; }
+    }
+  }
+}

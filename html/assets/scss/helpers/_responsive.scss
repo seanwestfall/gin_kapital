@@ -1,0 +1,150 @@
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 1200px and more
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@media (min-width: 1200px ) {
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 992px - 1199px
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@media (min-width: 992px) and (max-width: 1199px) {
+  .item { width: 211px; }
+
+  .col-1  { width: 51px !important;   overflow: visible; }
+  .col-2  { width: 132px !important;  overflow: visible; }
+  .col-3  { width: 213px !important;  overflow: visible; }
+  .col-4  { width: 294px !important;  overflow: visible; }
+  .col-5  { width: 375px !important;  overflow: visible; }
+  .col-6  { width: 456px !important;  overflow: visible; }
+  .col-7  { width: 537px !important;  overflow: visible; }
+  .col-8  { width: 618px !important;  overflow: visible; }
+  .col-9  { width: 699px !important;  overflow: visible; }
+  .col-10 { width: 780px !important;  overflow: visible; }
+  .col-11 { width: 861px !important; overflow: visible; }
+  .col-12 { width: 942px !important; overflow: visible; }
+
+  .offset-col-1  { @include transform( translateX(51px) ); }
+  .offset-col-2  { @include transform( translateX(132px) ); }
+  .offset-col-3  { @include transform( translateX(213px) ); }
+  .offset-col-4  { @include transform( translateX(294px) ); }
+  .offset-col-5  { @include transform( translateX(375px) ); }
+  .offset-col-6  { @include transform( translateX(456px) ); }
+  .offset-col-7  { @include transform( translateX(537px) ); }
+  .offset-col-8  { @include transform( translateX(618px) ); }
+  .offset-col-9  { @include transform( translateX(699px) ); }
+  .offset-col-10 { @include transform( translateX(780px) ); }
+  .offset-col-11 { @include transform( translateX(861px) ); }
+  .offset-col-12 { @include transform( translateX(942px) ); }
+
+  #item-detail .sidebar { width: 210px; right: -240px; }
+  .person {
+    .inner {
+      a { display: block; overflow: hidden; }
+    }
+  }
+
+  .offset-col-1, .offset-col-2, .offset-col-3, .offset-col-4, .offset-col-5, .offset-col-6,
+  .offset-col-7, .offset-col-8, .offset-col-9, .offset-col-10, .offset-col-11, .offset-col-12 { margin-left: 30px;
+    &.masonry { margin-left: -170px !important; }
+  }
+
+}
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// 768px - 979px
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@media (min-width: 768px) and (max-width: 991px) {
+  .item { width: 220px; }
+
+  .col-1  { width: 33px !important;   overflow: visible; }
+  .col-2  { width: 96px !important;  overflow: visible; }
+  .col-3  { width: 159px !important;  overflow: visible; }
+  .col-4  { width: 220px !important;  overflow: visible; }
+  .col-5  { width: 282px !important;  overflow: visible; }
+  .col-6  { width: 344px !important;  overflow: visible; }
+  .col-7  { width: 408px !important;  overflow: visible; }
+  .col-8  { width: 469px !important;  overflow: visible; }
+  .col-9  { width: 532px !important;  overflow: visible; }
+  .col-10 { width: 594px !important;  overflow: visible; }
+  .col-11 { width: 657px !important; overflow: visible; }
+  .col-12 { width: 720px !important; overflow: visible; }
+
+  .offset-col-1  { @include transform( translateX(33px) ); }
+  .offset-col-2  { @include transform( translateX(96px) ); }
+  .offset-col-3  { @include transform( translateX(159px) ); }
+  .offset-col-4  { @include transform( translateX(220px) ); }
+  .offset-col-5  { @include transform( translateX(282px) ); }
+  .offset-col-6  { @include transform( translateX(344px) ); }
+  .offset-col-7  { @include transform( translateX(408px) ); }
+  .offset-col-8  { @include transform( translateX(469px) ); }
+  .offset-col-9  { @include transform( translateX(532px) ); }
+  .offset-col-10 { @include transform( translateX(594px) ); }
+  .offset-col-11 { @include transform( translateX(657px) ); }
+  .offset-col-12 { @include transform( translateX(720px) ); }
+
+  .offset-col-1, .offset-col-2, .offset-col-3, .offset-col-4, .offset-col-5, .offset-col-6,
+  .offset-col-7, .offset-col-8, .offset-col-9, .offset-col-10, .offset-col-11, .offset-col-12 { margin-left: 30px;
+    &.masonry { margin-left: -170px !important; }
+  }
+
+  #item-detail {
+    .sidebar { position: relative; width: 100%; right: inherit; margin-top: 70px; }
+  }
+
+  .person {
+    &.list {
+      .left { display: block; width: 100%; padding: 30px;
+        .person-image { left: inherit; right: 20px; margin: inherit; }
+      }
+      .right { display: block; }
+    }
+  }
+
+  .promotion-box { display: block;
+    .left, .right { display: block; width: 100%; }
+  }
+
+}
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+// max to 767px
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+@media (max-width: 767px) {
+  .item { width: 100%; @include opacity(1); @include transform( translateX(0) );
+  }
+
+  .bullets {
+    li { width: 100% !important; }
+  }
+
+  .col-1, .col-2, .col-3, .col-4, .col-5, .col-6, .col-7, .col-8, .col-9, .col-10, .col-11, .col-12 { width: 100% !important; }
+
+  .grid.idle { display: none; }
+
+  #page-wrapper > header .submit-container { margin-top: 15px; }
+
+  .offset-col-1, .offset-col-2, .offset-col-3, .offset-col-4, .offset-col-5, .offset-col-6,
+  .offset-col-7, .offset-col-8, .offset-col-9, .offset-col-10, .offset-col-11, .offset-col-12 { margin-left: 0px !important;
+    &.grid { margin-left: 0px !important; }
+  }
+
+  #page-wrapper > header .header-inner nav.main > ul { @include transition-link; @include shadow; @include transform( translateY(10px) ); @include opacity(0); position: absolute; background-color: #fff; min-width: 100px; padding-left: 0; right: 0; text-align: right; visibility: hidden;
+    &.show-nav { visibility: visible; @include opacity(1); @include transform( translateY(0px) ); }
+    li { display: block;
+      &:last-child { padding-right: 15px; }
+      ul { background-color: #fff; right: 10px; top: 10px; left: inherit; padding-top: 30px; }
+    }
+  }
+
+  .toggle-nav { display: block; }
+
+  #item-detail {
+    .sidebar { position: relative; width: 100%; right: inherit; margin-top: 70px; }
+  }
+
+  .search-overlay {
+    .element { display: none; }
+    .inner { background-color: #fff; width: 100%; padding: 30px; }
+  }
+
+}

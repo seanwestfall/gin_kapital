@@ -1,0 +1,81 @@
+.cluster {
+  > div { line-height: 38px !important; color: #fff !important; }
+}
+
+.infobox { @include shadow; background-color: #fff; display: table;
+  article { margin-bottom: 20px;
+    &:last-child { margin-bottom: 0; }
+  }
+  dl { font-size: 12px; margin-bottom: 0; }
+  h1 { color: #fff; font-size: 18px; margin: 0; margin-bottom: 5px; font-weight: normal; }
+  h2 { color: #fff; font-size: 12px; font-weight: bold; margin: 0;
+    span { @include opacity(.6); }
+  }
+  h3 { font-size: 14px; font-weight: bold; margin: 0; margin-bottom: 10px; }
+  p { font-size: 12px; }
+  .left, .right { display: table-cell; width: 260px; vertical-align: middle; }
+  .left {
+    header { background-color: $color-grey-medium; padding: 20px; }
+    .image { position: relative; background-color: $color-grey-light; min-height: 150px;
+      img { width: 100%; }
+      .price { font-size: 14px; }
+    }
+  }
+  .right { padding: 20px; }
+}
+
+#map-simple { @include shadow; @include opacity(0); @include transition-link; min-height: 240px;
+  &.idle { @include opacity(1); }
+}
+
+.map-marker { cursor: pointer; visibility: hidden; @include transition-link; position: relative; top: 0; text-align: center; z-index: 1;
+  &:hover { top: -5px; }
+}
+
+.marker-loaded {
+  .map-marker { visibility: visible; }
+}
+
+// Fade In Marker
+
+.fade-in-marker { @include opacity(1); -webkit-animation: fadeInMarker .3s; animation: fadeInMarker .3s;
+  > img { z-index: 1; }
+}
+@keyframes fadeInMarker {
+  from { @include opacity(0); @include transform( translateY(-10px) ); }
+  to { @include opacity(1); @include transform( translateY(0)); }
+}
+@-webkit-keyframes fadeInMarker {
+  from { @include opacity(0); @include transform( translateY(-10px) ); }
+  to { @include opacity(1); @include transform( translateY(0)); }
+}
+
+// Fade Out Marker
+
+.fade-out-marker { @include opacity(0); -webkit-animation: fadeOutMarker .3s; animation: fadeOutMarker .3s;
+  > img { z-index: 1; }
+}
+@keyframes fadeOutMarker {
+  from { @include opacity(1);  @include transform( translateY(0)); }
+  to { @include opacity(0); @include transform( translateY(-10px) ); }
+}
+@-webkit-keyframes fadeOutMarker {
+  from { @include opacity(1);  @include transform( translateY(0)); }
+  to { @include opacity(0); @include transform( translateY(-10px) ); }
+}
+
+.bounce-animation {
+  .map-marker { -webkit-animation: bounce 1s forwards; animation: bounce 1s forwards; }
+}
+@keyframes bounce {
+  0% { @include transform(translate(0,0)); @include opacity(1); }
+  50% { @include transform(translate(0,-10px)); @include opacity(1); }
+  100% { @include transform(translate(0,0)); @include opacity(1); }
+}
+@-webkit-keyframes bounce {
+  0% { @include transform(translate(0,0)); @include opacity(1); }
+  50% { @include transform(translate(0,-15px)); @include opacity(1); }
+  100% { @include transform(translate(0,0)); @include opacity(1); }
+}
+
+.map-wrapper { @include transition-effect; }

@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en-US">
+<head>
+    <meta charset="UTF-8"/>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Agents Listing</title>
+</head>
+<body class="external">
+
+<div id="persons-list" class="content-container">
+    <div class="inner">
+        <h1>Agents Listing</h1>
+        <article class="person list animate move_from_bottom_short">
+            <div class="left average-color">
+                <figure class="person-image image">
+                    <img src="assets/img/person-02.jpg" alt="">
+                </figure>
+                <aside class="number">16</aside>
+                <aside>Properties</aside>
+            </div>
+            <div class="right">
+                <h3>Catherine Brown</h3>
+                <a href="tel:818-832-5258">818-832-5258</a>
+                <a href="mailto:catherine.brown@example.com">catherine.brown@example.com</a>
+                <a href="#">www.estateagency.com</a>
+                <a href="#person-detail" class="btn btn-link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Show Details</a>
+            </div>
+        </article>
+        <!--end .person-->
+        <article class="person list animate move_from_bottom_short">
+            <div class="left average-color">
+                <figure class="person-image image">
+                    <img src="assets/img/person-01.jpg" alt="">
+                </figure>
+                <aside class="number">2</aside>
+                <aside>Properties</aside>
+            </div>
+            <div class="right">
+                <h3>Sylvia Lenoir</h3>
+                <a href="tel:818-832-5258">818-832-5258</a>
+                <a href="mailto:catherine.brown@example.com">sylvia.enoir@example.com</a>
+                <a href="#">www.estateagency.com</a>
+                <a href="#person-detail" class="btn btn-link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Show Details</a>
+            </div>
+        </article>
+        <!--end .person-->
+        <article class="person list animate move_from_bottom_short">
+            <div class="left average-color">
+                <figure class="person-image image">
+                    <img src="assets/img/person-03.jpg" alt="">
+                </figure>
+                <aside class="number">6</aside>
+                <aside>Properties</aside>
+            </div>
+            <div class="right">
+                <h3>Robert S. Noel</h3>
+                <a href="tel:818-832-5258">818-832-5258</a>
+                <a href="mailto:catherine.brown@example.com">robert.noel@example.com</a>
+                <a href="#">www.estateagency.com</a>
+                <a href="#person-detail" class="btn btn-link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Show Details</a>
+            </div>
+        </article>
+        <!--end .person-->
+        <article class="person list animate move_from_bottom_short">
+            <div class="left average-color">
+                <figure class="person-image image">
+                    <img src="assets/img/person-04.jpg" alt="">
+                </figure>
+                <aside class="number">30</aside>
+                <aside>Properties</aside>
+            </div>
+            <div class="right">
+                <h3>Barbara Rusch</h3>
+                <a href="tel:818-832-5258">818-832-5258</a>
+                <a href="mailto:catherine.brown@example.com">barbara.rusch@example.com</a>
+                <a href="#">www.estateagency.com</a>
+                <a href="#person-detail" class="btn btn-link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Show Details</a>
+            </div>
+        </article>
+        <!--end .person-->
+        <article class="person list animate move_from_bottom_short">
+            <div class="left average-color">
+                <figure class="person-image image">
+                    <img src="assets/img/person-05.jpg" alt="">
+                </figure>
+                <aside class="number">9</aside>
+                <aside>Properties</aside>
+            </div>
+            <div class="right">
+                <h3>Linda Dugan</h3>
+                <a href="tel:818-832-5258">818-832-5258</a>
+                <a href="mailto:catherine.brown@example.com">linda.dugan@example.com</a>
+                <a href="#">www.estateagency.com</a>
+                <a href="#person-detail" class="btn btn-link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Show Details</a>
+            </div>
+        </article>
+        <!--end .person-->
+    </div>
+    <!--end .inner-->
+</div>
+<!--end #person-list-->
+
+<script>
+    var _latitude = 51.541599;
+    var _longitude = -0.112588;
+    var draggableMarker = false;
+    var scrollwheel = true;
+    var element = document.querySelector('body');
+
+    if( hasClass(element, 'external') ){
+        var head = document.getElementsByTagName('head')[0];
+        var script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = "../js/external.js";
+        head.appendChild(script);
+    }
+    else {
+        rating();
+        averageColor( $('.content-container') );
+    }
+
+    function hasClass(element, cls) {
+        return (' ' + element.className + ' ').indexOf(' ' + cls + ' ') > -1;
+    }
+</script>
+
+</body>
+</html>

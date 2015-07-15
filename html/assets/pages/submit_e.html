@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title></title>
+</head>
+<body>
+
+<div id="submit-page">
+    <div class="inner">
+        <h1 id="temp">Submit Item</h1>
+        <form role="form" method="post">
+            <article class="animate move_from_bottom_short">
+                <div class="row">
+                    <div class="col-md-8">
+                        <div class="form-group form-group-lg">
+                            <input type="text" class="form-control" id="title" name="title" placeholder="Title">
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <div class="form-group form-group-lg">
+                            <div class="input-group">
+                                <input type="text" class="form-control" id="price" name="price" placeholder="Price">
+                                <span class="input-group-addon">$</span>
+                            </div><!-- /input-group -->
+                        </div>
+                    </div>
+                </div>
+                <!--end .row-->
+                <div class="form-group">
+                    <textarea class="form-control" rows="4" id="description" placeholder="Description"></textarea>
+                </div>
+                <!--end textarea-->
+            </article>
+            <!--end Description-->
+            <article class="animate move_from_bottom_short">
+                <h3>Address</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select name="state" multiple title="State" id="state">
+                                <option value="1">Alabama</option>
+                                <option value="2">Iowa</option>
+                                <option value="3">Oregon</option>
+                                <option value="4">South Dakota</option>
+                                <option value="5">Utah</option>
+                                <option value="6">Washington</option>
+                            </select>
+                        </div>
+                        <!-- end form-group -->
+                        <div class="form-group">
+                            <select name="city" multiple title="City" id="city">
+                                <option value="1">Seattle</option>
+                                <option value="2">Spokane</option>
+                                <option value="3">Tacoma</option>
+                                <option value="4">Vancouver</option>
+                            </select>
+                        </div>
+                        <!-- end form-group -->
+                        <div class="form-group">
+                            <textarea class="form-control" rows="3" placeholder="Additional Address Info"></textarea>
+                        </div>
+
+                    </div>
+                    <div class="col-md-8">
+                        <div id="map-simple"></div>
+                    </div>
+                    <!-- end col-md-8-->
+                </div>
+            </article>
+            <!--end Address-->
+            <article class="animate move_from_bottom_short">
+                <h3>Overview</h3>
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select name="type" id="type">
+                                <option value="">Property Type</option>
+                                <option value="1">Apartment</option>
+                                <option value="2">Condominium</option>
+                                <option value="3">House</option>
+                                <option value="4">Construction Site</option>
+                                <option value="5">Forest</option>
+                            </select>
+                        </div>
+                        <!-- end .form-group -->
+                    </div>
+                    <!--end .col-md-4-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <select name="type" id="status">
+                                <option value="">Status</option>
+                                <option value="1">Sale</option>
+                                <option value="2">Rent</option>
+                                <option value="3">In Hold</option>
+                            </select>
+                        </div>
+                        <!-- end .form-group -->
+                    </div>
+                    <!--end .col-md-4-->
+                </div>
+                <!--end .row-->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="bedrooms" name="bedrooms" placeholder="Bedrooms">
+                        </div>
+                    </div>
+                    <!--end .col-md-4-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="bathrooms" name="bathrooms" placeholder="Bathrooms">
+                        </div>
+                    </div>
+                    <!--end .col-md-4-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="rooms" name="rooms" placeholder="Rooms">
+                        </div>
+                    </div>
+                    <!--end .col-md-4-->
+                </div>
+                <!--end .row-->
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="input-group drop-down">
+                            <input type="text" class="form-control" id="area" name="area" placeholder="Area">
+                            <div class="input-group-btn">
+                                <select name="type" id="measure">
+                                    <option value="1">m<sup>2</sup></option>
+                                    <option value="2">sqft</option>
+                                    <option value="3">ha</option>
+                                </select>
+                            </div><!-- /btn-group -->
+                        </div><!-- /input-group -->
+                    </div>
+                    <!--end .col-md-4-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="garages" name="garages" placeholder="Garages">
+                        </div>
+                    </div>
+                    <!--end .col-md-4-->
+                    <div class="col-md-4">
+                        <div class="form-group">
+                            <input type="text" class="form-control" id="build-year" name="build-year" placeholder="Build Year">
+                        </div>
+                    </div>
+                    <!--end .col-md-4-->
+                </div>
+                <!--end .row-->
+            </article>
+            <!--end Overview-->
+            <article>
+                <h3>Gallery</h3>
+            </article>
+            <!--end Gallery-->
+            <article>
+                <h3>Features</h3>
+                <ul class="list-unstyled checkboxes">
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="1">Free Parking</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="2">Cards Accepted</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="3">Wi-Fi</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="4">Air Condition</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="5">Reservations</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="6">Team-buildings</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="7">Places to seat</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="8">Winery</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="9">Draft Beer</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="10">LCD</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="11">Saloon</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="12">Free Access</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="13">Terrace</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="14">Minigolf</label></div></li>
+                    <li><div class="checkbox"><label><input type="checkbox" name="features[]" value="15">Night Bar</label></div></li>
+                </ul>
+            </article>
+            <!--end Features-->
+            <article class="center">
+                <div class="form-group">
+                    <button type="submit" class="btn btn-circle btn-primary btn-xl"><i class="fa fa-check"></i></button>
+                </div>
+                <!--end .form-group-->
+            </article>
+            <!--end Submit Button-->
+            <article class="center">
+                <small>By clicking “submit” button you agree with <a href="" class="link">Terms and Conditions</a></small>
+            </article>
+            <!--end terms-->
+        </form>
+    </div>
+    <!--end .row-->
+</div>
+<!--end #item-detail-->
+
+<script>
+    $(document).ready(function($) {
+        var _latitude = 51.541599;
+        var _longitude = -0.112588;
+        var draggableMarker = true;
+        var scrollwheel = true;
+
+        rating();
+
+        averageColor( $('#item-detail') );
+
+        //bootstrapSelect();
+
+        $('input').iCheck();
+
+        $('.submit-button').addClass('submit-page-open');
+
+        setTimeout(function() {
+            simpleMap(_latitude, _longitude,draggableMarker,scrollwheel);
+        }, 1000);
+    });
+</script>
+
+</body>
+</html>

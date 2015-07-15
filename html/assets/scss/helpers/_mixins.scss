@@ -1,0 +1,9 @@
+@mixin font-awesome { @include text-shadow(none); -webkit-font-smoothing: antialiased; font-family: 'fontawesome'; speak: none; font-weight: normal; font-variant: normal; line-height: 1; text-transform: none; }
+
+@mixin shadow { @include box-shadow(0 1px 2px 0 rgba(0,0,0,.15)); }
+
+@mixin shadow-small { @include box-shadow(0 1px 1px 0 rgba(0,0,0,.1)); }
+
+@mixin transition-effect { @include transition( all 0.6s cubic-bezier(0.52,0,0.24,1) 0s ); }
+
+@mixin transition-link { @include transition(.4s); }
