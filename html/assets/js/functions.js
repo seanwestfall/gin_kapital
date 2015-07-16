@@ -821,3 +821,9 @@ function jQueryLoaded(){
 function initialize(){
     simpleMap(_latitude, _longitude, draggableMarker, scrollwheel, true);
 }
+
+$('#sign-in').on("click", function() {
+    $.post( '/login', $('form#form-sign-in').serialize(), function(data) {
+      console.log(data);
+    });
+});
