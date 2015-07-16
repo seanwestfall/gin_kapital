@@ -54,7 +54,7 @@ func PostLogin(c *gin.Context) {
 
     email, password := c.PostForm("email"), c.PostForm("password")
 
-    err = db.QueryRow("select id from users where email=$1 and password=$2", email, password).Scan(&id)
+    err := db.QueryRow("select id from users where email=$1 and password=$2", email, password).Scan(&id)
     if err != nil {
       c.String(401, "Not Authorized")
     }
