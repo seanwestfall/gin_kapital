@@ -7,7 +7,7 @@ import (
   )
 
 func SetupDB() *sql.DB {
-    db, err := sql.Open("postgres", "user=postgres dbname=postgres password=SEnGc92LL port=5432 sslmode=disable")
+    db, err := sql.Open("postgres", "user=postgres dbname=postgres password=**** port=5432 sslmode=disable")
     PanicIf(err)
     return db
 }
