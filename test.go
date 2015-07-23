@@ -7,7 +7,7 @@ import (
   )
 
 func SetupDB() *sql.DB {
-    db, err := sql.Open("postgres", "dbname=btckapital1 sslmode=disable")
+    db, err := sql.Open("postgres", "user=**** dbname=**** password=**** port=5432 sslmode=disable")
     PanicIf(err)
     return db
 }
@@ -61,10 +61,11 @@ func PostLogin(c *gin.Context) {
     var db = SetupDB()
 
     email, password := c.PostForm("email"), c.PostForm("password")
+
     err := db.QueryRow("select id from users where email=$1 and password=$2", email, password).Scan(&id)
     if err != nil {
       c.String(401, "Not Authorized")
     }
 
-    c.String(200, "User id is " + id)
+    c.String(200, "Authorized")
 }
