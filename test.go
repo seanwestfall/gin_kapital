@@ -21,11 +21,14 @@ func PanicIf(err error) {
 
 func main() {
     r := gin.Default()
+
     /* HTML */
     r.LoadHTMLGlob("html/*.html")
 
     /* Assets */
     r.Static("/assets", "./html/assets")
+    r.Static("/app", "./html/admin/app")
+    r.Static("/server", "./html/admin/server")
 
     /* Router */
     r.GET("/", func(c *gin.Context) {
@@ -39,6 +42,11 @@ func main() {
     })
     r.GET("/index-map-fullscreen.html", func(c *gin.Context) {
         c.HTML(200, "index-map-fullscreen.html", nil);
+    })
+
+    r.GET("/admin", func(c *gin.Context) {
+        c.Header("Content-type", "text/html")
+        c.File("./html/admin/index-admin.html")
     })
 
     /* API */

@@ -1,0 +1,36 @@
+<div class="center-block mt-xl wd-xl">
+   <!-- START panel-->
+   <div class="panel panel-inverse">
+      <div class="panel-heading text-center">
+         <img src="app/img/logo-single.png" alt="Image" class="center-block img-rounded" />
+      </div>
+      <div class="panel-body">
+         <p class="text-center pv text-bold">LOGIN</p>
+         <form role="form" class="mb-lg">
+            <div class="form-group has-feedback">
+               <input id="exampleInputEmail1" type="email" placeholder="Your email" autocomplete="off" class="form-control" />
+               <span class="fa fa-envelope form-control-feedback text-muted"></span>
+            </div>
+            <div class="form-group has-feedback">
+               <input id="exampleInputPassword1" type="password" placeholder="Your password" class="form-control" />
+               <span class="fa fa-lock form-control-feedback text-muted"></span>
+            </div>
+            <div class="checkbox c-checkbox pull-left mt0">
+               <label>
+                  <input type="checkbox" value="" />
+                  <span class="fa fa-check"></span>Remember me</label>
+            </div>
+            <br/>
+            <button type="submit" class="btn btn-block btn-info mt-lg">Login</button>
+         </form>
+         <p class="text-center text-muted">Or</p>
+         <a ui-sref="page.register" class="btn btn-block btn-default">
+            <strong>Register an Account</strong>
+         </a>
+      </div>
+   </div>
+   <div class="text-center mt"><a ui-sref="page.recover" class="text-muted">Forgot your password?</a>
+   </div>
+   <!-- END panel-->
+   <div data-ng-include="'app/pages/page-footer.html'" class="p-lg text-center"></div>
+</div>
