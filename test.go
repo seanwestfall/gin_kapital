@@ -4,6 +4,7 @@ import (
     "database/sql"
     "github.com/gin-gonic/gin"
     _ "github.com/lib/pq"
+    "code.google.com/p/go.crypto/bcrypt"
   )
 
 func SetupDB() *sql.DB {
@@ -51,6 +52,8 @@ func main() {
 
     /* API */
     r.POST("/login", PostLogin)
+    r.GET("/logout", GetLogout)
+    r.POST("/signup", PostSignup)
 
     r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
@@ -68,4 +71,20 @@ func PostLogin(c *gin.Context) {
     }
 
     c.String(200, "Authorized")
+}
+
+func GetLogout(c *gin.Context) {
+    c.String(200, "Session Closed")
+}
+
+func PostSignup(c *gin.Context) {
+    name, email, password := c.PostForm("name"), c.PostForm("email"), c.PostForm("password")
+    hashedPassword, err := bcrypt.GenerateFromPassword([]byte(password), bcrypt.DefaultCost)
+    PanicIf(err)
+
+    var db = SetupDB()
+    _, err = db.Exec("insert into users (name, email, password) values ($1, $2, $3)", name, email, hashedPassword)
+    PanicIf(err)
+
+    c.Redirect(302, "/")
 }

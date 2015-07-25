@@ -827,3 +827,9 @@ $('#sign-in').on("click", function() {
       console.log(data);
     });
 });
+
+$('#register').on("click", function() {
+    $.post( '/signup', $('form#form-register').serialize(), function(data) {
+      console.log(data);
+    });
+});
