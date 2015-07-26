@@ -60,12 +60,13 @@ func main() {
 
 func PostLogin(c *gin.Context) {
     var id string
+    var pass string
 
     var db = SetupDB()
 
     email, password := c.PostForm("email"), c.PostForm("password")
 
-    err := db.QueryRow("select id from users where email=$1 and password=$2", email, password).Scan(&id)
+    err := db.QueryRow("select id from users where email=$1 and password=$2", email, password).Scan(&id, &pass)
     if err != nil || bcrypt.CompareHashAndPassword([]byte(pass), []byte(password)) != nil {
       c.String(401, "Not Authorized")
     }
@@ -86,5 +87,6 @@ func PostSignup(c *gin.Context) {
     _, err = db.Exec("insert into users (name, email, password) values ($1, $2, $3)", name, email, hashedPassword)
     PanicIf(err)
 
-    c.Redirect(302, "/")
+    c.String(200, "Registration Successful")
+    //c.Redirect(302, "/")
 }
