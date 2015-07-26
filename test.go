@@ -66,7 +66,7 @@ func PostLogin(c *gin.Context) {
     email, password := c.PostForm("email"), c.PostForm("password")
 
     err := db.QueryRow("select id from users where email=$1 and password=$2", email, password).Scan(&id)
-    if err != nil {
+    if err != nil || bcrypt.CompareHashAndPassword([]byte(pass), []byte(password)) != nil {
       c.String(401, "Not Authorized")
     }
 
