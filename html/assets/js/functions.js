@@ -833,3 +833,9 @@ $('#register').on("click", function() {
       console.log(data);
     });
 });
+
+$(document).ready(function() {
+    $.get( '/projects', function(data) {
+      console.log(data);
+    });
+});

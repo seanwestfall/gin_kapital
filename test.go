@@ -4,8 +4,23 @@ import (
     "database/sql"
     "github.com/gin-gonic/gin"
     _ "github.com/lib/pq"
+    //"encoding/json"
+    "log"
     "code.google.com/p/go.crypto/bcrypt"
   )
+
+type Project struct {
+    Title       string
+    Author      string
+    Description string
+    Category    string
+    Address     string
+    Goal        float64
+    Funded      float64
+    Backers     uint64
+    Days_to_go  uint64
+    Img_sm      string
+}
 
 func SetupDB() *sql.DB {
     db, err := sql.Open("postgres", "user=**** dbname=**** password=**** port=5432 sslmode=disable")
@@ -55,6 +70,8 @@ func main() {
     r.GET("/logout", GetLogout)
     r.POST("/signup", PostSignup)
 
+    r.GET("/projects",GetProjects)
+
     r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
 
@@ -90,3 +107,27 @@ func PostSignup(c *gin.Context) {
     c.String(200, "Registration Successful")
     //c.Redirect(302, "/")
 }
+
+func GetProjects(c *gin.Context) {
+    var db = SetupDB()
+
+    rows, err := db.Query("SELECT title, author, description, category, address, " +
+                          "goal, funded, backers, days_to_go, img_sm FROM projects" +
+                          "LIMIT 100")
+
+    if err != nil {
+        log.Fatal(err)
+    }
+
+    var projects []Project
+    for rows.Next() {
+        project := Project{}
+        if err := rows.Scan(&project); err != nil {
+            log.Fatal(err)
+        }
+        projects = append(projects, project)
+    }
+
+    c.JSON(200, projects)
+}
+
