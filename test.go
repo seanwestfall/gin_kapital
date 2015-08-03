@@ -15,10 +15,10 @@ type Project struct {
     Description string
     Category    string
     Address     string
-    Goal        float64
-    Funded      float64
+    Goal        string
+    Funded      string
     Backers     uint64
-    Days_to_go  uint64
+    Days_to_go  int64
     Img_sm      string
 }
 
@@ -70,7 +70,7 @@ func main() {
     r.GET("/logout", GetLogout)
     r.POST("/signup", PostSignup)
 
-    r.GET("/projects",GetProjects)
+    r.GET("/projects", GetProjects)
 
     r.Run(":8080") // listen and serve on 0.0.0.0:8080
 }
@@ -112,7 +112,7 @@ func GetProjects(c *gin.Context) {
     var db = SetupDB()
 
     rows, err := db.Query("SELECT title, author, description, category, address, " +
-                          "goal, funded, backers, days_to_go, img_sm FROM projects" +
+                          "goal, funded, backers, days_to_go, img_sm FROM projects " +
                           "LIMIT 100")
 
     if err != nil {
@@ -122,7 +122,10 @@ func GetProjects(c *gin.Context) {
     var projects []Project
     for rows.Next() {
         project := Project{}
-        if err := rows.Scan(&project); err != nil {
+        if err := rows.Scan(&project.Title, &project.Author, &project.Description, 
+                            &project.Category, &project.Address, &project.Goal, 
+                            &project.Funded, &project.Backers, &project.Days_to_go, 
+                            &project.Img_sm); err != nil {
             log.Fatal(err)
         }
         projects = append(projects, project)
