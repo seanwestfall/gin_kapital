@@ -834,8 +834,41 @@ $('#register').on("click", function() {
     });
 });
 
+/* define project */
+var Project = Backbone.Model.extend({
+    defaults : {
+      title:       null,
+      address:     null,
+      author:      null,
+      backers:     0,
+      days_to_go:  -1,
+      description: null,
+      funded:      null,
+      goal:        null,
+      img_sm:      null
+    },
+    parse: function(response) {
+      this.title = response.Title,
+      this.address = response.Address,
+      this.auther = response.Auther,
+      this.backers = response.Backers,
+      this.days_to_go = response.Days_to_go,
+      this.description = response.Description,
+      this.funded = response.Funded,
+      this.goal = response.Goal,
+      this.img_sm = response.Img_sm
+    }
+});
+
+var Projects = Backbone.Collection.extend({
+    model: Project,
+    url: '/projects',
+    initialize: function(){
+      this.fetch();
+    }
+});
+
 $(document).ready(function() {
-    $.get( '/projects', function(data) {
-      console.log(data);
-    });
+    Projects.initialize();
+    console.log(Projects);
 });
