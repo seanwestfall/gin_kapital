@@ -848,15 +848,17 @@ var Project = Backbone.Model.extend({
       img_sm:      null
     },
     parse: function(response) {
-      this.title = response.Title,
-      this.address = response.Address,
-      this.auther = response.Auther,
-      this.backers = response.Backers,
-      this.days_to_go = response.Days_to_go,
-      this.description = response.Description,
-      this.funded = response.Funded,
-      this.goal = response.Goal,
-      this.img_sm = response.Img_sm
+      this.set({
+        title = response.Title,
+        address = response.Address,
+        auther = response.Auther,
+        backers = response.Backers,
+        days_to_go = response.Days_to_go,
+        description = response.Description,
+        funded = response.Funded,
+        goal = response.Goal,
+        img_sm = response.Img_sm
+      })
     }
 });
 
@@ -869,6 +871,7 @@ var Projects = Backbone.Collection.extend({
 });
 
 $(document).ready(function() {
-    Projects.initialize();
-    console.log(Projects);
+    var projects = new Projects();
+    projects.fetch();
+    console.log(projects);
 });
