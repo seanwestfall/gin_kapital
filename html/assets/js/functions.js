@@ -849,15 +849,15 @@ var Project = Backbone.Model.extend({
     },
     parse: function(response) {
       this.set({
-        title = response.Title,
-        address = response.Address,
-        auther = response.Auther,
-        backers = response.Backers,
-        days_to_go = response.Days_to_go,
-        description = response.Description,
-        funded = response.Funded,
-        goal = response.Goal,
-        img_sm = response.Img_sm
+        title: response.Title,
+        address: response.Address,
+        auther: response.Auther,
+        backers: response.Backers,
+        days_to_go: response.Days_to_go,
+        description: response.Description,
+        funded: response.Funded,
+        goal: response.Goal,
+        img_sm: response.Img_sm
       })
     }
 });
