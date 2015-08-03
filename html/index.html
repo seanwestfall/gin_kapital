@@ -259,6 +259,9 @@
             <!--end Content Loader-->
 
             <div class="masonry grid animate">
+                <div id="projects-list"></div>
+
+
                 <div class="item">
                     <a href="assets/pages/items/1_e.html" data-expand-width="col-9" data-transition-parent=".content-loader" data-external="true">
                         <div class="inner">
@@ -1236,6 +1239,44 @@
     <!--end Page Content-->
 </div>
 
+<script id="items" type="text/x-handlebars-template">
+    {{each items}}
+      {{> item}}
+    {{/each}}
+</script>
+
+<script id="item-partial" type="text/x-handlebars-template">
+    <div class="item">
+        <a href="assets/pages/items/1_e.html" data-expand-width="col-9" data-transition-parent=".content-loader" data-external="true">
+            <div class="inner">
+                <div class="image">
+                    <div class="price average-color"><span>{{project.goal}}</span></div>
+                    <img src={{project.img_sm}} alt="">
+                </div>
+                <div class="item-content">
+                    <header class="average-color">
+                        <h2>{{project.title}}</h2>
+                        <h3>{{project.address}}</h3>
+                    </header>
+                    <footer>
+                        <dl>
+                            <dt>Funded</dt>
+                            <dd>{{project.funded}}</dd>
+                            <dt>Pledged</dt>
+                            <dd>{{project.funded}}</dd>
+                            <dt>Backers</dt>
+                            <dd>{{project.backers}}</dd>
+                            <dt>Days to Go</dt>
+                            <dd>{{project.dats_to_go}}</dd>
+                        </dl>
+                    </footer>
+                </div>
+            </div>
+        </a>
+    </div>
+    <!--end .item-->
+</script>
+
 <script type="text/javascript" src="assets/js/jquery-2.1.0.min.js"></script>
 <script type="text/javascript" src="assets/js/imagesloaded.pkgd.min.js"></script>
 <script type="text/javascript" src="assets/js/jquery-migrate-1.2.1.min.js"></script>
@@ -1259,6 +1300,7 @@
 
 <script type="text/javascript" src="assets/lib/underscore-min.js"></script>
 <script type="text/javascript" src="assets/lib/backbone-min.js"></script>
+<script type="text/javascript" src="assets/lib/handlebars-v3.0.3.js"></script>
 
 <script type="text/javascript" src="assets/js/functions.js"></script>
 <script type="text/javascript" src="assets/js/custom.js"></script>

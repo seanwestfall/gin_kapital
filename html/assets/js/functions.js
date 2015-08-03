@@ -848,17 +848,12 @@ var Project = Backbone.Model.extend({
       img_sm:      null
     },
     parse: function(response) {
-      this.set({
-        title: response.Title,
-        address: response.Address,
-        auther: response.Auther,
-        backers: response.Backers,
-        days_to_go: response.Days_to_go,
-        description: response.Description,
-        funded: response.Funded,
-        goal: response.Goal,
-        img_sm: response.Img_sm
-      })
+      _.each(response, function(val, key) {
+        Object.defineProperty(response, key.toLowerCase(),
+          Object.getOwnPropertyDescriptor(response, key));
+        delete response[key];
+      });
+      return response;
     }
 });
 
@@ -870,8 +865,27 @@ var Projects = Backbone.Collection.extend({
     }
 });
 
+var ProjectList = Backbone.View.extend({
+  initialize: function() {
+    this.render();
+  },
+  render: function() {
+    var template = Handlebars.compile($('#items').html());
+    Handlebars.registerPartial('item', $('#item-partial').html());
+
+    template(options.projects);
+
+    this.$el.html( template );
+  }
+  initialize: function(optons) {
+    this.options = options;
+  }
+});
+
 $(document).ready(function() {
     var projects = new Projects();
     projects.fetch();
     console.log(projects);
+
+    var projectList = new ProjectList({el: $('#project-list'), projects: projects});
 });
