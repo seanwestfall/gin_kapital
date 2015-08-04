@@ -213,28 +213,36 @@ function loadPage(_this){
             $('.content').append('<div id="loader"></div>');
         }
         $('.content #loader').load( $(_this).attr('href'), function(response, status, xhr) {
-            bootstrapSelect();
-            animateElement(parentElement);
+            var id = RegExp("[\\?&]" + 'id' + "=([^&#]*)").exec($(_this).attr('href'));
+            var project = new Project({id: id});
+            project.fetch({
+               success: function() {
+                 var project = new ProjectDetail({el: $('#item-detail'), project: project});
 
-            if( $(window).scrollTop() > $('body header:first').height() ){
-                $('.content-loader').css('top', $(window).scrollTop() - ( $('body header:first').height() + $('.promotion-area').height() + headerMargin + $('.page-content .search').height() ) );
-                lastTopOffset = $contentLoader.offset().top;
-                var contentLoaderHeight = $('.content-loader').height();
-                var headerHeight = $('body header:first').height();
-                var offsetFromTop = $(window).scrollTop();
-                var heightDifference = ( contentLoaderHeight + headerHeight + offsetFromTop ) - documentHeight;
+                  bootstrapSelect();
+                  animateElement(parentElement);
 
-                if( heightDifference > 0 ){
-                    $('#page-wrapper').height( contentLoaderHeight + headerHeight + offsetFromTop );
-                }
-            }
-            else {
-                $('.content-loader').css('top', 0 );
-            }
+                  if( $(window).scrollTop() > $('body header:first').height() ){
+                      $('.content-loader').css('top', $(window).scrollTop() - ( $('body header:first').height() + $('.promotion-area').height() + headerMargin + $('.page-content .search').height() ) );
+                      lastTopOffset = $contentLoader.offset().top;
+                      var contentLoaderHeight = $('.content-loader').height();
+                      var headerHeight = $('body header:first').height();
+                      var offsetFromTop = $(window).scrollTop();
+                      var heightDifference = ( contentLoaderHeight + headerHeight + offsetFromTop ) - documentHeight;
 
-            if( status == 'error' ){
-                console.log(status)
-            }
+                      if( heightDifference > 0 ){
+                          $('#page-wrapper').height( contentLoaderHeight + headerHeight + offsetFromTop );
+                      }
+                  }
+                  else {
+                      $('.content-loader').css('top', 0 );
+                  }
+
+                  if( status == 'error' ){
+                      console.log(status)
+                  }
+               }
+            });
         });
     }
 }
@@ -836,8 +844,10 @@ $('#register').on("click", function() {
 
 /* define project */
 var Project = Backbone.Model.extend({
-    defaults : {
+    defaults: {
+      id:          null,
       title:       null,
+      enddate:     null,
       address:     null,
       author:      null,
       backers:     0,
@@ -845,7 +855,12 @@ var Project = Backbone.Model.extend({
       description: null,
       funded:      null,
       goal:        null,
-      img_sm:      null
+      img_sm:      null,
+      img_l:       null
+    },
+    urlRoot: '/project',
+    url: function() {
+      return this.urlRoot + '/' + this.id;
     },
     parse: function(response) {
       _.each(response, function(val, key) {
@@ -879,6 +894,18 @@ var ProjectList = Backbone.View.extend({
   }
 });
 
+var ProjectDetail = Backbone.View.extend({
+  initialize: function(options) {
+    this.options = options;
+    this.render();
+  },
+  render: function() {
+    var template = Handlebars.compile($('#project').html());
+
+    this.$el.html( template( this.options.project.toJSON() ));
+  }
+});
+
 $(document).ready(function() {
     var projects = new Projects();
     projects.fetch({
@@ -901,7 +928,6 @@ $(document).ready(function() {
                       $('.masonry.full-width').css( 'margin-left', windowWidth - masonryWidth + masonry.gutter/2 );
                   }
               });
-
           }
        }
     });
