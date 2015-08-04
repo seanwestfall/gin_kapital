@@ -219,7 +219,8 @@ function loadPage(_this){
 
             $.when(project.fetch({
                      success: function() {
-                       user.set('id': project.get('author'));
+                       var userid = project.get('author');
+                       user.set({id: userid});
                      }
                    }),
                    user.fetch()).then(function() {
