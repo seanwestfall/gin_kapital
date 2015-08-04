@@ -217,40 +217,43 @@ function loadPage(_this){
             var project = new Project({id: id[1]});
             var user    = new User();
 
-            $.when(project.fetch({
+            project.fetch({
                      success: function() {
                        var userid = project.get('author');
                        user.set({id: userid});
-                     }
-                   }),
-                   user.fetch()).then(function() {
-                      var projectDetail = new ProjectDetail({el: $('#item-detail'),
-                                                             project: project,
-                                                             user: user});
 
-                      bootstrapSelect();
-                      animateElement(parentElement);
+                       user.fetch({
+                         success: function() {
+                           var projectDetail = new ProjectDetail({el: $('#item-detail'),
+                                                                   project: project,
+                                                                   user: user});
+                              bootstrapSelect();
+                              animateElement(parentElement);
 
-                      if( $(window).scrollTop() > $('body header:first').height() ){
-                          $('.content-loader').css('top', $(window).scrollTop() - ( $('body header:first').height() + $('.promotion-area').height() + headerMargin + $('.page-content .search').height() ) );
-                          lastTopOffset = $contentLoader.offset().top;
-                          var contentLoaderHeight = $('.content-loader').height();
-                          var headerHeight = $('body header:first').height();
-                          var offsetFromTop = $(window).scrollTop();
-                          var heightDifference = ( contentLoaderHeight + headerHeight + offsetFromTop ) - documentHeight;
+                              if( $(window).scrollTop() > $('body header:first').height() ){
+                                  $('.content-loader').css('top', $(window).scrollTop() - ( $('body header:first').height() + $('.promotion-area').height() + headerMargin + $('.page-content .search').height() ) );
+                                  lastTopOffset = $contentLoader.offset().top;
+                                  var contentLoaderHeight = $('.content-loader').height();
+                                  var headerHeight = $('body header:first').height();
+                                  var offsetFromTop = $(window).scrollTop();
+                                  var heightDifference = ( contentLoaderHeight + headerHeight + offsetFromTop ) - documentHeight;
 
-                          if( heightDifference > 0 ){
-                              $('#page-wrapper').height( contentLoaderHeight + headerHeight + offsetFromTop );
-                          }
-                      }
-                      else {
-                          $('.content-loader').css('top', 0 );
-                      }
+                                  if( heightDifference > 0 ){
+                                      $('#page-wrapper').height( contentLoaderHeight + headerHeight + offsetFromTop );
+                                  }
+                              }
+                              else {
+                                  $('.content-loader').css('top', 0 );
+                              }
 
-                      if( status == 'error' ){
-                          console.log(status)
-                      }
-                   });
+                              if( status == 'error' ){
+                                  console.log(status)
+                              }
+
+                         }
+                     })
+                   }
+           });
         });
     }
 }
