@@ -223,9 +223,9 @@ function loadPage(_this){
                      }
                    }),
                    user.fetch()).then(function() {
-                      var projectDetail = new ProjectDetail({el: $('#item-detail'), 
-                                                            {project: project,
-                                                             user: user}});
+                      var projectDetail = new ProjectDetail({el: $('#item-detail'),
+                                                             project: project,
+                                                             user: user});
 
                       bootstrapSelect();
                       animateElement(parentElement);
@@ -933,7 +933,7 @@ var ProjectDetail = Backbone.View.extend({
   render: function() {
     var template = Handlebars.compile($('#project-detail').html());
 
-    this.$el.html( template( this.options.project.toJSON() ));
+    this.$el.html( template({project: this.options.project.toJSON(), user: this.options.user.toJSON() }));
   }
 });
 
