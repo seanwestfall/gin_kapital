@@ -215,34 +215,41 @@ function loadPage(_this){
         $('.content #loader').load( $(_this).attr('href'), function(response, status, xhr) {
             var id = RegExp("[\\?&]" + 'id' + "=([^&#]*)").exec($(_this).attr('href'));
             var project = new Project({id: id[1]});
-            project.fetch({
-               success: function() {
-                 var projectDetail = new ProjectDetail({el: $('#item-detail'), project: project});
+            var user    = new User();
 
-                  bootstrapSelect();
-                  animateElement(parentElement);
+            $.when(project.fetch({
+                     success: function() {
+                       user.set('id': project.get('author'));
+                     }
+                   }),
+                   user.fetch()).then(function() {
+                      var projectDetail = new ProjectDetail({el: $('#item-detail'), 
+                                                            {project: project,
+                                                             user: user}});
 
-                  if( $(window).scrollTop() > $('body header:first').height() ){
-                      $('.content-loader').css('top', $(window).scrollTop() - ( $('body header:first').height() + $('.promotion-area').height() + headerMargin + $('.page-content .search').height() ) );
-                      lastTopOffset = $contentLoader.offset().top;
-                      var contentLoaderHeight = $('.content-loader').height();
-                      var headerHeight = $('body header:first').height();
-                      var offsetFromTop = $(window).scrollTop();
-                      var heightDifference = ( contentLoaderHeight + headerHeight + offsetFromTop ) - documentHeight;
+                      bootstrapSelect();
+                      animateElement(parentElement);
 
-                      if( heightDifference > 0 ){
-                          $('#page-wrapper').height( contentLoaderHeight + headerHeight + offsetFromTop );
+                      if( $(window).scrollTop() > $('body header:first').height() ){
+                          $('.content-loader').css('top', $(window).scrollTop() - ( $('body header:first').height() + $('.promotion-area').height() + headerMargin + $('.page-content .search').height() ) );
+                          lastTopOffset = $contentLoader.offset().top;
+                          var contentLoaderHeight = $('.content-loader').height();
+                          var headerHeight = $('body header:first').height();
+                          var offsetFromTop = $(window).scrollTop();
+                          var heightDifference = ( contentLoaderHeight + headerHeight + offsetFromTop ) - documentHeight;
+
+                          if( heightDifference > 0 ){
+                              $('#page-wrapper').height( contentLoaderHeight + headerHeight + offsetFromTop );
+                          }
                       }
-                  }
-                  else {
-                      $('.content-loader').css('top', 0 );
-                  }
+                      else {
+                          $('.content-loader').css('top', 0 );
+                      }
 
-                  if( status == 'error' ){
-                      console.log(status)
-                  }
-               }
-            });
+                      if( status == 'error' ){
+                          console.log(status)
+                      }
+                   });
         });
     }
 }
@@ -871,6 +878,30 @@ var Project = Backbone.Model.extend({
       return response;
     }
 });
+
+/* define user */
+var User = Backbone.Model.extend({
+    defaults: {
+      id:           null,
+      name:         null,
+      email:        null,
+      phone:        null,
+      introduction: null,
+      img_avatar:   null
+    },
+    urlRoot: '/user',
+    url: function() {
+      return this.urlRoot + '/' + this.id;
+    },
+    parse: function(response) {
+      _.each(response, function(val, key) {
+        Object.defineProperty(response, key.toLowerCase(),
+          Object.getOwnPropertyDescriptor(response, key));
+        delete response[key];
+      });
+      return response;
+    }
+})
 
 var Projects = Backbone.Collection.extend({
     model: Project,

@@ -54,19 +54,20 @@
                     <a href="#" class=""><img src="assets/img/arrow-left.png"></a>
                     <a href="#" class=""><img src="assets/img/arrow-right.png"></a>
                 </div>
+                <h1>{{project.title}}</h1>
                 <article class="animate move_from_bottom_short">
                     <div class="gallery">
                         <div class="image">
-                          <img src={{img_l}} alt="">
+                          <img src={{project.img_l}} alt="">
                         </div>
                     </div>
                 </article>
                 <article class="animate move_from_bottom_short">
-                    <h1>{{address}}</h1>
+                    <h1>{{project.address}}</h1>
                     <h2><i class="fa fa-map-marker"></i>San Francisco</h2>
-                    <figure class="price average-color"><span>{{goal}}</span></figure>
+                    <figure class="price average-color"><span>{{project.goal}}</span></figure>
                     <p>
-                    {{description}}
+                    {{project.description}}
                     </p>
                 </article>
                 <!--end Description-->
@@ -74,18 +75,18 @@
                     <div class="person animate move_from_bottom_short">
                         <div class="inner average-color">
                             <figure class="person-image">
-                                <img src="assets/img/person-01.jpg" alt="">
+                                <img src={{user.img_avatar}} alt="">
                             </figure>
-                            <header>Catherine Brown</header>
-                            <a href="tel:818-832-5258">818-832-5258</a>
-                            <a href="mailto:catherine.brown@example.com">catherine.brown@example.com</a>
+                            <header>{{user.name}}</header>
+                            <a href="tel:{{user.phone}}">{{user.phone}}</a>
+                            <a href="mailto:{{user.email}}">{{user.email}}</a>
                             <hr>
                             <a href="#person-detail" class="link" data-toggle="collapse" aria-expanded="false" aria-controls="person-detail">Show Details</a>
                         </div>
                         <div class="collapse" id="person-detail">
                             <div class="details">
                                 <p>
-                                    Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nulla vestibulum, sem ut sollicitudin consectetur, augue diam ornare massa
+                                    {{user.introduction}}
                                 </p>
                                 <h3>Contact Me</h3>
                                 <form role="form" method="post" class="clearfix">

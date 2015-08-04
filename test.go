@@ -25,6 +25,15 @@ type Project struct {
     Img_l       string
 }
 
+type User struct {
+    Id           uint64
+    Name         string
+    Email        string
+    Phone        string
+    Introduction string
+    Img_avatar   string
+}
+
 func SetupDB() *sql.DB {
     db, err := sql.Open("postgres", "user=**** dbname=**** password=**** port=5432 sslmode=disable")
     PanicIf(err)
@@ -164,4 +173,17 @@ func GetProject(c *gin.Context) {
 }
 
 func GetUser(c *gin.Context) {
+    id := c.Param("id")
+    var db = SetupDB()
+
+    row := db.QueryRow("SELECT id, name, email, phone, img_avatar, introduction " +
+                       "FROM users WHERE id=$1", id)
+
+    user := User{}
+    if err := row.Scan(&user.Id, &user.Name, &user.Email, &user.Phone,
+                       &user.Img_avatar, &user.Introduction); err != nil {
+        log.Fatal(err)
+    }
+
+    c.JSON(200, user)
 }
