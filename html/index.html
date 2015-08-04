@@ -1240,7 +1240,7 @@
 </div>
 
 <script id="items" type="text/x-handlebars-template">
-    {{each items}}
+    {{#each items}}
       {{> item}}
     {{/each}}
 </script>
@@ -1250,24 +1250,24 @@
         <a href="assets/pages/items/1_e.html" data-expand-width="col-9" data-transition-parent=".content-loader" data-external="true">
             <div class="inner">
                 <div class="image">
-                    <div class="price average-color"><span>{{project.goal}}</span></div>
-                    <img src={{project.img_sm}} alt="">
+                    <div class="price average-color"><span>{{goal}}</span></div>
+                    <img src={{img_sm}} alt="">
                 </div>
                 <div class="item-content">
                     <header class="average-color">
-                        <h2>{{project.title}}</h2>
-                        <h3>{{project.address}}</h3>
+                        <h2>{{title}}</h2>
+                        <h3>{{address}}</h3>
                     </header>
                     <footer>
                         <dl>
                             <dt>Funded</dt>
-                            <dd>{{project.funded}}</dd>
+                            <dd>{{funded}}</dd>
                             <dt>Pledged</dt>
-                            <dd>{{project.funded}}</dd>
+                            <dd>{{funded}}</dd>
                             <dt>Backers</dt>
-                            <dd>{{project.backers}}</dd>
+                            <dd>{{backers}}</dd>
                             <dt>Days to Go</dt>
-                            <dd>{{project.dats_to_go}}</dd>
+                            <dd>{{dats_to_go}}</dd>
                         </dl>
                     </footer>
                 </div>

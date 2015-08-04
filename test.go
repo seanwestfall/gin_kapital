@@ -48,7 +48,9 @@ func main() {
 
     /* Router */
     r.GET("/", func(c *gin.Context) {
-        c.HTML(200, "index.html", nil);
+        c.Header("Content-type", "text/html")
+        c.File("./html/index.html")
+        //c.HTML(200, "index.html", nil);
     })
     r.GET("/index-search.html", func(c *gin.Context) {
         c.HTML(200, "index-search.html", nil);

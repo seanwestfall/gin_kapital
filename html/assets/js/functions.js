@@ -867,6 +867,7 @@ var Projects = Backbone.Collection.extend({
 
 var ProjectList = Backbone.View.extend({
   initialize: function() {
+    this.options = options;
     this.render();
   },
   render: function() {
@@ -875,17 +876,35 @@ var ProjectList = Backbone.View.extend({
 
     template(options.projects);
 
-    this.$el.html( template );
-  }
-  initialize: function(optons) {
-    this.options = options;
+    this.$el.html( template({items: this.options.projects.toJSON()}) );
+    this.$el.contents().unwrap();
   }
 });
 
 $(document).ready(function() {
     var projects = new Projects();
-    projects.fetch();
-    console.log(projects);
+    projects.fetch({
+       success: function() {
+         var projectList = new ProjectList({el: $('#projects-list'), projects: projects});
+         var $masonry = $('.masonry');
+          if( $masonry.length ){
+              var masonry;
+              var container = $masonry;
+              container.imagesLoaded( function() {
+                  container = document.querySelector('.masonry');
+                  masonry = new Masonry( container, {
+                      gutter: 30,
+                      itemSelector: '.item'
+                  });
+                  calculateItemsInRow();
+                  if( $('.masonry.full-width').length ){
+                      var windowWidth = $(window).width() / 2;
+                      var masonryWidth =  masonry.cols * masonry.columnWidth / 2;
+                      $('.masonry.full-width').css( 'margin-left', windowWidth - masonryWidth + masonry.gutter/2 );
+                  }
+              });
 
-    var projectList = new ProjectList({el: $('#project-list'), projects: projects});
+          }
+       }
+    });
 });

@@ -64,8 +64,13 @@ $(document).ready(function($) {
     }
 
 //  Masonry grid listing -----------------------------------------------------------------------------------------------
+        var masonry;
+            /*masonry = new Masonry( container, {
+                gutter: 30,
+                itemSelector: '.item'
+            });*/
 
-    if( $masonry.length ){
+   /* if( $masonry.length ){
         var masonry;
         var container = $masonry;
         container.imagesLoaded( function() {
@@ -82,7 +87,7 @@ $(document).ready(function($) {
             }
         });
 
-    }
+    }*/
 
 //  Checkbox -----------------------------------------------------------------------------------------------------------
 
