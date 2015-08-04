@@ -217,7 +217,7 @@ function loadPage(_this){
             var project = new Project({id: id[1]});
             project.fetch({
                success: function() {
-                 var project = new ProjectDetail({el: $('#item-detail'), project: project});
+                 var projectDetail = new ProjectDetail({el: $('#item-detail'), project: project});
 
                   bootstrapSelect();
                   animateElement(parentElement);
