@@ -214,7 +214,7 @@ function loadPage(_this){
         }
         $('.content #loader').load( $(_this).attr('href'), function(response, status, xhr) {
             var id = RegExp("[\\?&]" + 'id' + "=([^&#]*)").exec($(_this).attr('href'));
-            var project = new Project({id: id});
+            var project = new Project({id: id[1]});
             project.fetch({
                success: function() {
                  var project = new ProjectDetail({el: $('#item-detail'), project: project});
