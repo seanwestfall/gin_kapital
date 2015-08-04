@@ -866,15 +866,13 @@ var Projects = Backbone.Collection.extend({
 });
 
 var ProjectList = Backbone.View.extend({
-  initialize: function() {
+  initialize: function(options) {
     this.options = options;
     this.render();
   },
   render: function() {
     var template = Handlebars.compile($('#items').html());
     Handlebars.registerPartial('item', $('#item-partial').html());
-
-    template(options.projects);
 
     this.$el.html( template({items: this.options.projects.toJSON()}) );
     this.$el.contents().unwrap();
