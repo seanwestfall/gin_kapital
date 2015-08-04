@@ -900,7 +900,7 @@ var ProjectDetail = Backbone.View.extend({
     this.render();
   },
   render: function() {
-    var template = Handlebars.compile($('#project').html());
+    var template = Handlebars.compile($('#project-detail').html());
 
     this.$el.html( template( this.options.project.toJSON() ));
   }
