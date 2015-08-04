@@ -929,6 +929,12 @@ $(document).ready(function() {
                   }
               });
           }
+          $('a, button, .btn-group, .btn, .item a').on('click',function() {
+              clickEvents(this);
+          });
+          $('a[href="#"], a[data-external]').on('click',function(e) {
+              e.preventDefault();
+          });
        }
     });
 });
